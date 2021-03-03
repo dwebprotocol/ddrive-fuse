@@ -1,2 +1,2 @@
-# hyperdrive-fuse
-A FUSE filesystem for Hyperdrive
+# @ddrive/fuse
+A FUSE filesystem for dDrive
