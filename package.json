@@ -24,7 +24,7 @@
   },
   "homepage": "https://dwebx.org",
   "devDependencies": {
-    "dwebvault": "^1.0.0",
+    "basestore": "^1.0.0",
     "fs-xattr": "^0.3.0",
     "ddrive": "^5.0.0",
     "random-access-memory": "^3.1.1",
