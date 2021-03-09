@@ -2,13 +2,13 @@ const p = require('path')
 const fs = require('fs')
 const os = require('os')
 
-const datEncoding = require('dat-encoding')
+const datEncoding = require('dwebx-encoding')
 const mkdirp = require('mkdirp')
 const fsConstants = require('filesystem-constants')
 const Fuse = require('fuse-native')
 const { translate, linux } = fsConstants
 
-const debug = require('debug')('hyperdrive-fuse')
+const debug = require('debug')('@ddrive/fuse')
 
 const platform = os.platform()
 
@@ -183,7 +183,7 @@ class HyperdriveFuse {
       self.drive.lstat(path, (err, st) => {
         if (err) return cb(-err.errno || Fuse.ENOENT)
         // Always translate absolute symlinks to be relative to the mount root.
-        // Since hyperdrive supports absolute paths that aren't prefixed by '/', translate them first.
+        // Since ddrive supports absolute paths that aren't prefixed by '/', translate them first.
         const linkname = !p.isAbsolute(st.linkname) && !st.linkname.startsWith('.') ? '/' + st.linkname : st.linkname
         const resolved = p.isAbsolute(st.linkname) ? p.join(self.mnt, linkname) : p.join(self.mnt, p.resolve(path, linkname))
         return cb(0, resolved)
