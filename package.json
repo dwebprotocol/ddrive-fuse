@@ -1,6 +1,6 @@
 {
   "name": "@ddrive/fuse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FUSE bindings for dDrive",
   "main": "index.js",
   "directories": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://dwebx.org",
   "devDependencies": {
-    "basestorevault": "^1.0.0",
+    "basestorex": "^1.0.0",
     "fs-xattr": "^0.3.0",
     "ddrive": "^5.0.0",
     "random-access-memory": "^3.1.1",
