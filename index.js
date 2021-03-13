@@ -12,7 +12,7 @@ const debug = require('debug')('@ddrive/fuse')
 
 const platform = os.platform()
 
-class HyperdriveFuse {
+class DDriveFuse {
   constructor (drive, mnt, opts = {}) {
     this.drive = drive
     this.mnt = p.resolve(mnt)
@@ -245,7 +245,7 @@ class HyperdriveFuse {
   }
 
   async mount (handlers) {
-    if (this.fuse) throw new Error('Cannot remount the same HyperdriveFuse instance.')
+    if (this.fuse) throw new Error('Cannot remount the same DDriveFuse instance.')
 
     const self = this
     handlers = handlers ? { ...handlers } : this.getBaseHandlers()
@@ -296,7 +296,7 @@ class HyperdriveFuse {
 }
 
 module.exports = {
-  HyperdriveFuse,
+  DDriveFuse,
   configure: Fuse.configure,
   unconfigure: Fuse.unconfigure,
   isConfigured: Fuse.isConfigured,

@@ -1,6 +1,6 @@
 {
   "name": "@ddrive/fuse",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "FUSE bindings for dDrive",
   "main": "index.js",
   "directories": {
