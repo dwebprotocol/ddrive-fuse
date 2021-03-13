@@ -86,7 +86,7 @@ class DDriveFuse {
       log('write', path, handle, len, offset)
 
       // TODO: Duplicating the input buffer is a temporary patch for a race condition.
-      // (Fuse overwrites the input before the data is flushed to storage in hypercore.)
+      // (Fuse overwrites the input before the data is flushed to storage in ddatabase.)
       buf = Buffer.from(buf)
 
       self.drive.write(handle, buf, 0, len, offset, (err, bytesWritten) => {

@@ -7,11 +7,11 @@ const rimraf = require('rimraf')
 const xattr = require('fs-xattr')
 const Fuse = require('fuse-native')
 
-const { HyperdriveFuse } = require('..')
+const { DDriveFuse } = require('..')
 
 test('can read/write a small file', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -37,7 +37,7 @@ test('can read/write a small file', async t => {
 
 test('can read/write a large file', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -63,7 +63,7 @@ test('can read/write a large file', async t => {
 
 test('can read/write a huge file', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -89,7 +89,7 @@ test('can read/write a huge file', async t => {
 
 test('can list a directory', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -124,7 +124,7 @@ test('can list a directory', async t => {
 
 test('can create and read from a symlink', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -156,7 +156,7 @@ test('can create and read from a symlink', async t => {
 
 test('can get/set/list xattrs', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -181,7 +181,7 @@ test('can get/set/list xattrs', async t => {
 
 test('uid/gid are normalized on read', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
 
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
@@ -216,7 +216,7 @@ test('uid/gid are normalized on read', async t => {
 
 test('a relative symlink will not read files outside the sandbox', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
 
@@ -248,7 +248,7 @@ test('a relative symlink will not read files outside the sandbox', async t => {
 
 test('an absolute symlink will not read files outside the sandbox', async t => {
   const drive = ddrive(ram)
-  const fuse = new HyperdriveFuse(drive, './mnt')
+  const fuse = new DDriveFuse(drive, './mnt')
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
 
@@ -294,7 +294,7 @@ test('cannot open a writable file descriptor on a non-writable drive', async t =
     })
   })
 
-  const fuse = new HyperdriveFuse(clone, './mnt')
+  const fuse = new DDriveFuse(clone, './mnt')
   const onint = () => cleanup(fuse, true)
   process.on('SIGINT', onint)
   await fuse.mount()
